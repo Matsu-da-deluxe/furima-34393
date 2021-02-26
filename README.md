@@ -61,12 +61,12 @@
 | Column        | Type       | Options                        |
 | ------------- | ---------- | ------------------------------ |
 | postal_code   | string     | null: false                    |
-| area          | string     | null: false                    |
+| area_id       | string     | null: false                    |
 | city          | string     | null: false                    |
 | address       | string     | null: false                    |
 | building_name | string     |                                |
 | phone_num     | string     | null: false                    |
-| buyer_id      | references | null: false, foreign_key: true |
+| buyer         | references | null: false, foreign_key: true |
 |               |            |                                |
 
 ### Association
