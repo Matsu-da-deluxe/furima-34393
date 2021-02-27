@@ -25,7 +25,6 @@
 
 | Column      | Type       | Options                       |
 | ----------- | ---------- | ----------------------------- |
-| image       |            | null: false                   |
 | name        | string     | null: false                   |
 | description | text       | null: false                   |
 | category_id | integer    | null: false                   |
@@ -54,13 +53,13 @@
 
 - belongs_to :user
 - belongs_to :item
-- has_one :address
+- has_one :addresses
 
-## adds テーブル
+## addresses テーブル
 
 | Column        | Type       | Options                        |
 | ------------- | ---------- | ------------------------------ |
-| postal_code   | string     | null: false                    |
+| postal_code   | integer    | null: false                    |
 | area_id       | string     | null: false                    |
 | city          | string     | null: false                    |
 | address       | string     | null: false                    |
