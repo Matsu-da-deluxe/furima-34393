@@ -4,9 +4,9 @@ class ItemsController < ApplicationController
   end
 
   def new
-    @condition = Condition.all
+    @item = Item.new
   end
-  
+
   def create
     Item.create(item_params)
   end
