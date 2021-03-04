@@ -1,11 +1,12 @@
 class ItemsController < ApplicationController
-  def index 
+  def index
+    @items = Item.order("created_at DESC")
   end
 
-  def create
-    @item = Item.new
+  def new
+    @condition = Condition.all
   end
-
+  
   def create
     Item.create(item_params)
   end

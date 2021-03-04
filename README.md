@@ -15,7 +15,6 @@
 |                    |        |                           |
 
 
-
 ### Association
 
 - has_many :items
@@ -35,6 +34,7 @@
 | price       | integer    | null: false                   |
 | user        | references | null:false, foreign_key: true |
 |             |            |                               |
+
 
 ### Association
 
