@@ -9,7 +9,6 @@ class Item < ApplicationRecord
   has_one_attached :image
   has_one :buyer
 
-  #ジャンルの選択が「--」の時は保存できないようにする
   
   with_options presence: true do
     validates :name
@@ -19,6 +18,7 @@ class Item < ApplicationRecord
     validates :price,numericality:{greater_than_or_equal_to:300, less_than_or_equal_to:9_999_999,message:'Out of setting range'}
   end
 
+  #ジャンルの選択が「--」の時は保存できないようにする
   with_options numericality: { other_than: 1 } do
     validates :category_id
     validates :status_id
