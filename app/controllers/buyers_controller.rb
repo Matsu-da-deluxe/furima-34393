@@ -1,17 +1,9 @@
 class BuyersController < ApplicationController
   before_action :authenticate_user!
   before_action :set_item, only: [:index, :create]
-
+  before_action :check_user, only: [:index, :create]
   def index
     @buyer_address = BuyersAddress.new
-
-    unless @item.user_id != current_user.id
-      redirect_to root_path
-    end
-
-    unless @item.buyer.nil?
-      redirect_to root_path
-    end
   end
 
   def create
@@ -32,6 +24,10 @@ class BuyersController < ApplicationController
 
   def buyer_params
     params.require(:buyers_address).permit(:postal_code, :area_id, :city, :address, :building_name, :phone_num).merge(user_id: current_user.id, item_id: params[:item_id], token: params[:token])
+  end
+
+  def check_user
+    redirect_to root_path if current_user == @buyers_address.user || @buyers_address.buyer.present?
   end
 
   def pay_item
