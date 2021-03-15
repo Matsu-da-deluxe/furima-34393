@@ -5,13 +5,10 @@ class BuyersController < ApplicationController
     @buyer_address = BuyersAddress.new
     @item = Item.find(params[:item_id])
 
-    unless @item.user_id != current_user.id
+    unless @item.user_id != current_user.id || @item.buyer.nil?
       redirect_to root_path
     end
     
-    unless @item.buyer.nil?
-      redirect_to root_path
-    end
   end
 
   def create
