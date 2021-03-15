@@ -2,7 +2,7 @@ class ItemsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
   before_action :set_item, only: [:edit, :show, :update, :destroy]
   before_action :item_user_check, only: [:edit, :update, :destroy]
-
+  before_action :check_item, only: [:edit, :update]
 
   def index
     @items = Item.order("created_at DESC")
@@ -11,6 +11,7 @@ class ItemsController < ApplicationController
   def new
     @item = Item.new
   end
+
 
   def create
     @item = Item.new(item_params)
@@ -55,4 +56,7 @@ class ItemsController < ApplicationController
     end
   end
 
+  def check_item
+    redirect_to root_path if @item.buyer.present?
+  end
 end
