@@ -11,14 +11,14 @@ class BuyersAddress
     validates :postal_code, format: {with: /\A\d{3}[-]\d{4}\z/, message: "is invalid. Include hyphen(-)"}
     validates :phone_num, format: {with: /\A\d{11}\z/, message: "is invalid. without hyphen(-)"}
   end
-  validates :prefecture_id, numericality: {other_than: 0, message: "can't be blank"}
+  validates :area_id, numericality: {other_than: 0, message: "can't be blank"}
 
   def save
     # 購入情報を保存し、変数buyerに代入する
     buyer = Buyer.create(user_id: user_id, item_id: item_id)
     # 住所を保存する
     # buyer_idには、変数buyerのidと指定する
-    Address.create(postal_code: postal_code, area_id: area_id, city: city, address: address, building_name: building_name, phone_num: phone_num, buyer_id: buyer_id)
+    Address.create(postal_code: postal_code, area_id: area_id, city: city, address: address, building_name: building_name, phone_num: phone_num, buyer_id: buyer.id)
   end
 
 end
